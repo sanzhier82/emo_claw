@@ -1,0 +1,20 @@
+{
+  "sensevoice_path": "/tmp/models/iic/SenseVoiceSmall",
+  "video_dir": "./assets/emo_video",
+  "gif_dir": "./assets/emo_gif",
+  "auto_trigger": false,
+  "default_emotion": "NEUTRAL",
+  "emotion_map": {
+    "HAPPY": ["开心", "高兴", "棒", "好", "赞"],
+    "SAD": ["难过", "伤心", "哭"],
+    "ANGRY": ["生气", "怒", "不爽"],
+    "PLAYFUL": ["调皮", "逗", "玩"],
+    "HIGHFIVE": ["击掌", "干得漂亮", "厉害"],
+    "HARDWORKING": ["辛苦", "累"],
+    "SORRY": ["抱歉", "对不起"]
+  },
+  "channel_types": {
+    "video_channels": ["telegram", "qq", "whatsapp", "discord"],
+    "gif_channels": ["feishu", "slack", "dingtalk", "signal", "imessage"]
+  }
+}
