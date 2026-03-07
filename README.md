@@ -9,10 +9,10 @@ https://youtu.be/-tLqPCCq8s0
 ## ✨ 功能特性
 
 - **多情绪识别**：支持文字和语音情绪分析
+- **SenseVoice支持**：语音情绪识别更准确（推荐安装）
 - **通道差异化回复**：根据通道自动选择视频或GIF格式
 - **情景化回复**：如6:00-10:00首次对话自动回复早安
 - **天气触发**：查询天气时根据温度/天气自动回复对应表情
-- **SenseVoice支持**：可选安装语音情绪识别模型
 - **可扩展可替换**：用户可扩展更多的表情加入表情包，也可整体替换为自己的表情库，保持表情文件同名即可
 
 ## 🎭 支持的情绪
@@ -73,6 +73,21 @@ cp -r config/* ~/.openclaw/workspace/skills/emotion-comm/config/
 
 4. 重启OpenClaw使技能生效
 
+### 可选：安装SenseVoice（支持语音情绪识别）
+
+推荐安装，可大幅提升语音情绪识别的准确率。
+
+1. 创建模型目录：
+```bash
+mkdir -p /tmp/models/iic
+```
+
+2. 模型会自动在首次运行时从 HuggingFace 下载：
+   - 模型地址：https://huggingface.co/iic/SenseVoiceSmall
+   - 或从 Modelscope：https://modelscope.cn/models/iic/SenseVoiceSmall
+
+3. 首次使用语音功能时会自动下载模型（约100MB）
+
 ### 方式二：手动下载安装
 
 访问 GitHub releases 页面下载最新版本：
@@ -84,13 +99,21 @@ https://github.com/sanzhier82/emo_claw/releases
 
 ```json
 {
-  "sensevoice_path": "/tmp/models/iic/SenseVoiceSmall",
   "video_dir": "~/.openclaw/workspace/emo_video",
   "gif_dir": "~/.openclaw/workspace/emo_gif",
   "auto_trigger": true,
-  "default_emotion": "NEUTRAL"
+  "default_emotion": "NEUTRAL",
+  "sensevoice_path": "/tmp/models/iic/SenseVoiceSmall"
 }
 ```
+
+| 配置项 | 说明 |
+|--------|------|
+| video_dir | 视频表情存放目录 |
+| gif_dir | GIF表情存放目录 |
+| auto_trigger | 是否自动触发 |
+| default_emotion | 默认情绪 |
+| sensevoice_path | SenseVoice模型路径（推荐安装） |
 
 ## 📖 使用
 
