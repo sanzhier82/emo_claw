@@ -3,6 +3,7 @@
 为OpenClaw量身打造的拟人化动态表情包回复技能，能自动根据用户情绪并回复合适的动态表情包。
 
 ## 🎬 介绍视频
+
 https://youtu.be/-tLqPCCq8s0
 
 ## ✨ 功能特性
@@ -47,29 +48,35 @@ https://youtu.be/-tLqPCCq8s0
 
 ## 🚀 安装
 
-### 方式一：ClawHub安装（推荐）
+### 方式一：GitHub安装（推荐）
 
+1. 克隆仓库到本地：
 ```bash
-clawdhub install emo_claw
+git clone https://github.com/sanzhier82/emo_claw.git
 ```
 
-### 方式二：手动安装
-
-1. 克隆仓库：
+2. 将表情资源复制到指定目录：
 ```bash
-git clone https://github.com/your-repo/emo_claw.git ~/.openclaw/skills/emo_claw
+# 视频表情
+cp -r assets/emo_video/* ~/.openclaw/workspace/emo_video/
+
+# GIF表情  
+cp -r assets/emo_gif/* ~/.openclaw/workspace/emo_gif/
 ```
 
-2. 准备表情包资源：
+3. 复制技能文件：
 ```bash
-# 视频表情放到 ~/.openclaw/workspace/emo_video/
-# GIF表情放到 ~/.openclaw/workspace/emo_gif/
+cp SKILL.md ~/.openclaw/workspace/skills/emotion-comm/
+cp -r scripts/* ~/.openclaw/workspace/skills/emotion-comm/scripts/
+cp -r config/* ~/.openclaw/workspace/skills/emotion-comm/config/
 ```
 
-3. 可选：安装SenseVoice（更好的语音情绪识别）
-```bash
-# 模型会自动下载
-```
+4. 重启OpenClaw使技能生效
+
+### 方式二：手动下载安装
+
+访问 GitHub releases 页面下载最新版本：
+https://github.com/sanzhier82/emo_claw/releases
 
 ## ⚙️ 配置
 
