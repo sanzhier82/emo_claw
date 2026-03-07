@@ -24,7 +24,7 @@ def get_today():
     """获取今天的日期字符串"""
     return datetime.now().strftime("%Y-%m-%d")
 
-def check_first_message_today(user_id):
+def check_first_message_today(user_id="default"):
     """检测是否是当天第一次消息"""
     today = get_today()
     
@@ -43,12 +43,15 @@ def check_first_message_today(user_id):
     
     # 更新状态
     state[f"last_date_{user_id}"] = today
-    with open(STATE_FILE, 'w') as f:
-        json.dump(state, f)
+    try:
+        with open(STATE_FILE, 'w') as f:
+            json.dump(state, f)
+    except:
+        pass
     
     return is_first
 
-def should_send_greeting(user_id):
+def should_send_greeting(user_id="default"):
     """判断是否应该发送早安"""
     return is_morning() and check_first_message_today(user_id)
 

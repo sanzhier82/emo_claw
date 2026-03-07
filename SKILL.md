@@ -1,6 +1,6 @@
 ---
-name: emo_claw
-description: 虾酱emo交互技能 - 基于OpenClaw的双向情感交流技能，自动识别用户情绪并回复合适的动态表情包。支持语音情绪识别（需SenseVoice）和文字情绪分析，区分通道发送视频或GIF表情。
+name: emotion-comm
+description: 双向情感交流技能 - 根据用户情绪自动回复合适的动态表情包。支持语音情绪识别（需SenseVoice）和文字情绪分析，区分通道发送视频或GIF表情。
 ---
 
 # 双向情感交流 (Emotion Communication)

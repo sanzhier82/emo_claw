@@ -19,6 +19,9 @@ DEFAULT_GIF_DIR = os.path.expanduser("~/.openclaw/workspace/emo_gif")
 MORNING_START = 6
 MORNING_END = 10
 
+# 状态文件路径
+STATE_FILE = os.path.expanduser("~/.openclaw/workspace/.emo_state.json")
+
 # 通道类型配置 - 支持视频自动播放的通道
 VIDEO_CHANNELS = ["telegram", "whatsapp", "discord"]
 GIF_CHANNELS = ["feishu", "slack", "dingtalk", "signal", "imessage"]
@@ -152,10 +155,37 @@ def analyze_text_emotion(text):
     
     return "NEUTRAL"
 
-def check_morning_greeting():
-    """检测是否是早上（6:00-10:00），返回早安情绪"""
+def check_morning_greeting(user_id="default"):
+    """检测是否是早上（6:00-10:00）且是当天首次对话，返回早安情绪"""
+    import time
+    
     current_hour = datetime.now().hour
-    if MORNING_START <= current_hour < MORNING_END:
+    if not (MORNING_START <= current_hour < MORNING_END):
+        return None
+    
+    # 检查是否是当天首次对话
+    today = datetime.now().strftime("%Y-%m-%d")
+    
+    state = {}
+    if os.path.exists(STATE_FILE):
+        try:
+            with open(STATE_FILE, 'r') as f:
+                state = json.load(f)
+        except:
+            state = {}
+    
+    last_date = state.get(f"last_date_{user_id}", "")
+    is_first = last_date != today
+    
+    # 更新状态
+    state[f"last_date_{user_id}"] = today
+    try:
+        with open(STATE_FILE, 'w') as f:
+            json.dump(state, f)
+    except:
+        pass
+    
+    if is_first:
         return "MORNING"
     return None
 
@@ -186,7 +216,6 @@ def main():
     parser.add_argument("--audio", type=str, help="要分析的语音文件路径")
     parser.add_argument("--channel", type=str, default="telegram", choices=["telegram", "feishu"], help="发送通道")
     parser.add_argument("--check", action="store_true", help="检查环境状态")
-    parser.add_argument("--auto-morning", action="store_true", help="自动检测早上并回复早安")
     
     args = parser.parse_args()
     
@@ -201,15 +230,11 @@ def main():
         print(json.dumps(status, indent=2, ensure_ascii=False))
         return
     
-    # 早上自动回复早安
-    if args.auto_morning:
-        morning_emotion = check_morning_greeting()
-        if morning_emotion:
-            print(f"🌅 检测到早上时间，自动回复早安")
-            emotion = morning_emotion
-        else:
-            print("⏰ 当前不是早上时间，不自动回复早安")
-            return
+    # 早上自动回复早安（默认启用，不再需要参数）
+    morning_emotion = check_morning_greeting()
+    if morning_emotion:
+        print(f"🌅 检测到早上时间（首次对话），自动回复早安")
+        emotion = morning_emotion
     elif args.audio:
         # 语音输入
         print("🔍 正在识别语音...")
