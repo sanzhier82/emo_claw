@@ -2,7 +2,7 @@
   "sensevoice_path": "/tmp/models/iic/SenseVoiceSmall",
   "video_dir": "./assets/emo_video",
   "gif_dir": "./assets/emo_gif",
-  "auto_trigger": false,
+  "auto_trigger": true,
   "default_emotion": "NEUTRAL",
   "emotion_map": {
     "HAPPY": ["开心", "高兴", "棒", "好", "赞"],
