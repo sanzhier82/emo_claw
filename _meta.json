@@ -1,8 +1,14 @@
 {
   "name": "虾酱emo交互技能",
   "slug": "emo_claw",
-  "description": "基于OpenClaw的双向情感交流技能，自动识别用户情绪并回复合适的动态表情包",
-  "tags": ["emotion", "telegram", "gif", "video", "fun"],
-  "version": "1.0.0",
+  "description": "基于OpenClaw的双向情感交流技能，自动识别用户情绪并回复合适的动态表情包，支持节日自动触发",
+  "tags": [
+    "emotion",
+    "telegram",
+    "gif",
+    "video",
+    "fun"
+  ],
+  "version": "1.0.8",
   "author": "sanzhier"
 }

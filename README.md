@@ -13,6 +13,7 @@ https://youtu.be/-tLqPCCq8s0
 - **通道差异化回复**：根据通道自动选择视频或GIF格式
 - **情景化回复**：如6:00-10:00首次对话自动回复早安
 - **天气触发**：查询天气时根据温度/天气自动回复对应表情
+- **节日自动触发**：节日当天首次对话自动发送节日表情
 - **可扩展可替换**：用户可扩展更多的表情加入表情包，也可整体替换为自己的表情库，保持表情文件同名即可
 
 ## 🎭 支持的情绪
@@ -21,7 +22,7 @@ https://youtu.be/-tLqPCCq8s0
 |------|-----------|----------|
 | morning | 早安、早上好 | 每天早上首次对话 |
 | happy | 开心、高兴、棒 | 被表扬/开心时 |
-| highfive | 击掌、干得漂亮 | 完成任务/庆祝 |
+| highfive | 击掌，干得漂亮 | 完成任务/庆祝 |
 | fox | 变身、狐狸 | 调皮时 |
 | snow | 下雪、雪 | 查询天气显示下雪 |
 | swim | 游泳、高温 | 查询天气30度以上 |
@@ -34,6 +35,22 @@ https://youtu.be/-tLqPCCq8s0
 | cry | 哭、难过 | 伤心时 |
 | eyeroll | 翻白眼、无语 | 无语时 |
 | hardworking | 辛苦、累 | 工作相关 |
+| shy | 害羞、不好意思 | 尴尬时 |
+| deliver | 外卖、饿了 | 吃饭时间 |
+| joke | 笑话、搞笑 | 讲笑话时 |
+| love | 爱你、么么哒 | 表达爱意 |
+
+### 🎉 节日限定表情
+
+| 节日 | 视频文件 | 触发说明 |
+|------|----------|----------|
+| 春节/除夕 | springfestival.mp4 | 节日当天首次对话自动触发 |
+| 元宵节 | lanternday.mp4 | 节日当天首次对话自动触发 |
+| 端午节 | duanwu.mp4 | 节日当天首次对话自动触发 |
+| 七夕节 | qixi.mp4 | 节日当天首次对话自动触发 |
+| 中秋节 | midautumn.mp4 | 节日当天首次对话自动触发 |
+
+**节日自动触发**：在 `scripts/check_morning.py` 中的 `SPECIAL_HOLIDAYS` 配置节日日期，节日当天用户首次对话自动发送对应节日表情（仅触发一次，同一天不再重复）。
 
 ## 📱 通道差异化
 
@@ -66,9 +83,9 @@ cp -r assets/emo_gif/* ~/.openclaw/workspace/emo_gif/
 
 3. 复制技能文件：
 ```bash
-cp SKILL.md ~/.openclaw/workspace/skills/emotion-comm/
-cp -r scripts/* ~/.openclaw/workspace/skills/emotion-comm/scripts/
-cp -r config/* ~/.openclaw/workspace/skills/emotion-comm/config/
+cp SKILL.md ~/.openclaw/workspace/skills/emo_claw/
+cp -r scripts/* ~/.openclaw/workspace/skills/emo_claw/scripts/
+cp -r config/* ~/.openclaw/workspace/skills/emo_claw/config/
 ```
 
 4. 重启OpenClaw使技能生效
@@ -126,8 +143,8 @@ python3 emotion_handler.py --text "你真棒！"
 # 语音情绪分析
 python3 emotion_handler.py --audio voice.ogg
 
-# 早上自动回复
-python3 emotion_handler.py --auto-morning --channel telegram
+# 早上/节日自动回复检测
+python3 check_morning.py <user_id>
 ```
 
 ### 自动触发
@@ -138,7 +155,8 @@ python3 emotion_handler.py --auto-morning --channel telegram
 
 1. 添加视频文件到 `emo_video/` 目录
 2. 添加同名GIF到 `emo_gif/` 目录
-3. 在 `emotion_handler.py` 的 `EMOTION_MAP` 中添加映射
+3. 在 `scripts/emotion_handler.py` 的 `EMOTION_MAP` 中添加映射
+4. 如需节日自动触发，在 `scripts/check_morning.py` 的 `SPECIAL_HOLIDAYS` 中添加日期
 
 ## 📦 项目结构
 
@@ -146,15 +164,17 @@ python3 emotion_handler.py --auto-morning --channel telegram
 emo_claw/
 ├── SKILL.md              # 技能定义
 ├── _meta.json            # 元数据
+├── CHANGELOG.md          # 更新日志
 ├── config/
 │   └── settings.json     # 配置文件
 ├── scripts/
 │   ├── emotion_handler.py    # 核心处理脚本
 │   ├── check_sensevoice.py   # SenseVoice检测
-│   └── check_morning.py      # 早上检测
+│   ├── check_morning.py      # 早上/节日检测
+│   └── check_holiday.py     # 节日检测模块
 └── assets/
-    ├── emo_video/       # 视频表情
-    └── emo_gif/         # GIF表情
+    ├── emo_video/       # 视频表情 (22个)
+    └── emo_gif/         # GIF表情 (22个)
 ```
 
 ## 🤝 贡献
@@ -167,4 +187,4 @@ MIT License
 
 ---
 
-@sanzhier82- 2026
+@sanzhier82 - 2026

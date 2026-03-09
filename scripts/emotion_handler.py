@@ -103,6 +103,51 @@ EMOTION_MAP = {
         "video": "fox.mp4",
         "gif": "fox.gif"
     },
+    "SHY": {
+        "keywords": ["害羞", "不好意思", "尴尬", "shy"],
+        "video": "shy.mp4",
+        "gif": "shy.gif"
+    },
+    "DELIVER": {
+        "keywords": ["外卖", "吃饭", "_DELIVER", "deliver", "饿了"],
+        "video": "deliver.mp4",
+        "gif": "deliver.gif"
+    },
+    "SPRINGFESTIVAL": {
+        "keywords": ["除夕", "春节", "过年", "新年快乐", "春節"],
+        "video": "springfestival.mp4",
+        "gif": "springfestival.gif"
+    },
+    "LANTERNDAY": {
+        "keywords": ["元宵节", "元宵", "灯会", "lantern"],
+        "video": "lanternday.mp4",
+        "gif": "lanternday.gif"
+    },
+    "DUANWU": {
+        "keywords": ["端午节", "端午", "粽子", "duanwu"],
+        "video": "duanwu.mp4",
+        "gif": "duanwu.gif"
+    },
+    "QIXI": {
+        "keywords": ["七夕节", "七夕", "牛郎织女", "qixi"],
+        "video": "qixi.mp4",
+        "gif": "qixi.gif"
+    },
+    "MIDAUTUMN": {
+        "keywords": ["中秋节", "中秋", "月饼", "赏月", "midautumn"],
+        "video": "midautumn.mp4",
+        "gif": "midautumn.gif"
+    },
+    "LOVE": {
+        "keywords": ["爱你", "爱", "么么哒", "love", "爱心"],
+        "video": "love.mp4",
+        "gif": "love.gif"
+    },
+    "JOKE": {
+        "keywords": ["笑话", "讲个笑话", "joke", "笑死了", "搞笑"],
+        "video": "joke.mp4",
+        "gif": "happy.gif"
+    },
     "NEUTRAL": {
         "keywords": [],
         "video": "happy.mp4",  # 默认

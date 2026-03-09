@@ -5,16 +5,68 @@
   "auto_trigger": true,
   "default_emotion": "NEUTRAL",
   "emotion_map": {
-    "HAPPY": ["开心", "高兴", "棒", "好", "赞"],
-    "SAD": ["难过", "伤心", "哭"],
-    "ANGRY": ["生气", "怒", "不爽"],
-    "PLAYFUL": ["调皮", "逗", "玩"],
-    "HIGHFIVE": ["击掌", "干得漂亮", "厉害"],
-    "HARDWORKING": ["辛苦", "累"],
-    "SORRY": ["抱歉", "对不起"]
+    "HAPPY": [
+      "开心",
+      "高兴",
+      "棒",
+      "好",
+      "赞",
+      "笑话",
+      "笑死了",
+      "笑死",
+      "笑话",
+      "笑话",
+      "讲个笑话",
+      "joke"
+    ],
+    "SAD": [
+      "难过",
+      "伤心",
+      "哭"
+    ],
+    "ANGRY": [
+      "生气",
+      "怒",
+      "不爽"
+    ],
+    "PLAYFUL": [
+      "讲笑话",
+      "joke"
+    ],
+    "HIGHFIVE": [
+      "击掌",
+      "干得漂亮",
+      "厉害"
+    ],
+    "HARDWORKING": [
+      "辛苦",
+      "累"
+    ],
+    "SORRY": [
+      "抱歉",
+      "对不起"
+    ],
+    "SHY": [
+      "害羞",
+      "不好意思",
+      " shy",
+      "shy",
+      "尴尬"
+    ]
   },
   "channel_types": {
-    "video_channels": ["telegram", "qq", "whatsapp", "discord"],
-    "gif_channels": ["feishu", "slack", "dingtalk", "signal", "imessage"]
+    "video_channels": [
+      "telegram",
+      "qq",
+      "whatsapp",
+      "discord"
+    ],
+    "gif_channels": [
+      "feishu",
+      "slack",
+      "dingtalk",
+      "signal",
+      "imessage"
+    ]
   }
 }
